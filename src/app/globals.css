@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+:root {
+  --ink: #242239;
+  --muted: #716c86;
+  --cream: #fffaf4;
+  --pink: #ff5d8f;
+}
+
+* { box-sizing: border-box; }
+
+html, body { min-height: 100%; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--cream);
+  font-family: "DM Sans", sans-serif;
+}
+
+button { font: inherit; }
+
+.celebration-page {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  overflow: hidden;
+  padding: 24px;
+  background: radial-gradient(circle at 50% 44%, #fff 0, var(--cream) 48%, #f8eaf4 100%);
+}
+
+.glow { position: absolute; border-radius: 50%; filter: blur(2px); opacity: .6; }
+.glow-one { width: 240px; height: 240px; top: -100px; left: -70px; background: #ffd9e6; }
+.glow-two { width: 330px; height: 330px; right: -150px; bottom: -140px; background: #d8f5ef; }
+
+.hero-card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 620px);
+  padding: clamp(42px, 8vw, 82px) 32px;
+  text-align: center;
+}
+
+.eyebrow { margin: 0 0 18px; color: var(--pink); font-size: 12px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+h1 { margin: 0; font-family: "Space Grotesk", sans-serif; font-size: clamp(54px, 11vw, 102px); line-height: .94; letter-spacing: -.07em; }
+h1 span { color: var(--pink); }
+.subtitle { margin: 24px 0 34px; color: var(--muted); font-size: clamp(16px, 2.5vw, 19px); }
+
+.hurray-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  border: 0;
+  border-radius: 999px;
+  padding: 17px 27px 17px 31px;
+  color: white;
+  background: var(--ink);
+  box-shadow: 0 12px 24px rgba(36, 34, 57, .18);
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 700;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.hurray-button:hover { transform: translateY(-3px); box-shadow: 0 16px 28px rgba(36, 34, 57, .22); background: #332f50; }
+.hurray-button:active { transform: translateY(0); }
+.hurray-button:focus-visible { outline: 4px solid #ffc857; outline-offset: 4px; }
+.button-sparkle { color: #ffc857; font-size: 23px; line-height: 1; }
+.hint { margin: 19px 0 0; color: #a49eaf; font-size: 13px; }
+
+.confetti { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+.confetti-piece { position: absolute; top: -20px; width: 11px; height: 18px; border-radius: 3px; animation: fall 3.2s cubic-bezier(.18,.8,.3,1) forwards; }
+
+@keyframes fall {
+  0% { opacity: 1; transform: translate3d(0, -20px, 0) rotate(0deg); }
+  70% { opacity: 1; }
+  100% { opacity: 0; transform: translate3d(24px, 110vh, 0) rotate(720deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .confetti-piece { animation-duration: 1s; }
+  .hurray-button { transition: none; }
+}
